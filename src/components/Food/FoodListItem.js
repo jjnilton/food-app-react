@@ -17,7 +17,7 @@ const FoodListItem = (props) => {
 
   return (
     <li className={styles.container}>
-      <div>
+      <div className={styles["item-container"]}>
         <div className={styles.name}>{props.name}</div>
         <div className={styles.description}>{props.description}</div>
         <div className={styles.price}>${props.price}</div>
