@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    margin: 20px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.description {
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.price {
+    font-weight: bold;
+    color: sienna;
+    margin-bottom: 10px;
+}
+
+.label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.input {
+    width: 50px;
+}

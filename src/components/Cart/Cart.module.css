@@ -1,0 +1,17 @@
+.cart {
+    margin: 20px;
+    /* width: 100%; */
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid sienna;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.total-label, .total-value {
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
