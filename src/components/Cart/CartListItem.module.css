@@ -9,6 +9,10 @@
   border-bottom: 1px solid #ddd;
 }
 
+.item-container {
+  max-width: 75%;
+}
+
 .item-name {
   font-weight: bold;
   font-size: 1.4em;
@@ -39,6 +43,10 @@
   font-size: 0.75em;
   text-align: right;
   color: #555;
+}
+
+.add-sub-container {
+  display: flex;
 }
 
 .add-sub {

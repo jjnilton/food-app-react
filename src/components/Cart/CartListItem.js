@@ -1,7 +1,6 @@
 import styles from "./CartListItem.module.css";
 
 const CartListItem = (props) => {
-
   const handleAdd = () => {
     props.addCartItem(props.item);
   };
@@ -12,7 +11,7 @@ const CartListItem = (props) => {
 
   return (
     <li className={styles.item}>
-      <div>
+      <div className={styles["item-container"]}>
         <div className={styles["item-name"]}>{props.name}</div>
         <div className={styles["item-price-quantity"]}>
           <div className={styles["item-price"]}>${props.price}</div>
@@ -24,8 +23,14 @@ const CartListItem = (props) => {
           <div>subtotal</div>
           <div>${(props.price * props.quantity).toFixed(2)}</div>
         </div>
-        <button className={styles["add-sub"]} onClick={handleRemove}>-</button>
-        <button className={styles["add-sub"]} onClick={handleAdd}>+</button>
+        <div className={styles["add-sub-container"]}>
+          <button className={styles["add-sub"]} onClick={handleRemove}>
+            -
+          </button>
+          <button className={styles["add-sub"]} onClick={handleAdd}>
+            +
+          </button>
+        </div>
       </div>
     </li>
   );
