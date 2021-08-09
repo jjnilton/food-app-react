@@ -14,7 +14,6 @@ const Backdrop = (props) => {
 const Modal = (props) => {
   const handleAction = () => {
     console.log("placing order...");
-    console.log(props.cartItems);
   };
 
   return (
@@ -26,14 +25,14 @@ const Modal = (props) => {
       {ReactDOM.createPortal(
         <div className={styles.modal}>
           <Card>
-            <Cart
-              // cartItems={props.cartItems}
-              // addCartItem={props.addCartItem}
-              // removeCartItem={props.removeCartItem}
-            ></Cart>
+            <Cart></Cart>
             <div className={styles["button-container"]}>
-              <button className={styles.close} onClick={props.toggleModal}>Close</button>
-              <button className={styles.action} onClick={handleAction}>Order</button>
+              <button className={styles.close} onClick={props.toggleModal}>
+                Close
+              </button>
+              <button className={styles.action} onClick={handleAction}>
+                Order
+              </button>
             </div>
           </Card>
         </div>,

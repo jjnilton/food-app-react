@@ -18,7 +18,7 @@ const CartButton = (props) => {
       }, 100);
       return () => {
         clearTimeout(timer);
-      }
+      };
     }
   }, [items]);
 

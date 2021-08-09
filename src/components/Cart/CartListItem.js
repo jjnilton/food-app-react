@@ -6,13 +6,11 @@ const CartListItem = (props) => {
   const cartContext = useContext(CartContext);
 
   const handleAdd = () => {
-    // props.addCartItem(props.item);
-    cartContext.addToCart(props.item)
+    cartContext.addToCart(props.item);
   };
 
   const handleRemove = () => {
-    // props.removeCartItem(props.item);
-    cartContext.delFromCart(props.item)
+    cartContext.delFromCart(props.item);
   };
 
   return (

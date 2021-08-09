@@ -5,33 +5,6 @@ import Modal from "./components/UI/Modal";
 import CartProvider from "./store/CartProvider";
 import styles from "./App.module.css";
 
-const data = [
-  {
-    id: 0,
-    name: "Sushi",
-    description: "Finest fish",
-    price: 21.99,
-  },
-  {
-    id: 1,
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.99,
-  },
-  {
-    id: 2,
-    name: "Barbecue Burger",
-    description: "America raw meaty",
-    price: 12.99,
-  },
-  {
-    id: 3,
-    name: "Green Bowl",
-    description: "Healthy... and green...",
-    price: 22.99,
-  },
-];
-
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -56,16 +29,10 @@ const App = () => {
     <CartProvider>
       <Header toggleModal={toggleModal}></Header>
       <main className={styles.main}>
-        <FoodList data={data}></FoodList>
+        <FoodList></FoodList>
       </main>
       {modalVisible && (
-        <Modal
-          toggleModal={toggleModal}
-          modalVisible={modalVisible}
-          // cartItems={cartItems}
-          // addCartItem={addToCartHandler}
-          // removeCartItem={handleRemoveFromCart}
-        ></Modal>
+        <Modal toggleModal={toggleModal} modalVisible={modalVisible}></Modal>
       )}
     </CartProvider>
   );

@@ -10,17 +10,19 @@ const CartList = (props) => {
     return (
       <CartListItem
         item={item}
+        key={item.id}
         id={item.id}
         name={item.name}
         price={item.price}
         quantity={item.quantity}
-        // addCartItem={props.addCartItem}
-        // removeCartItem={props.removeCartItem}
       ></CartListItem>
     );
   });
 
-  return <ul className={styles.list}>{cartItems}</ul>;
+  return (
+    cartItems.length > 0 ? <ul className={styles.list}>{cartItems}</ul> : <p>No items, please add something to the cart.</p>
+
+  )
 };
 
 export default CartList;

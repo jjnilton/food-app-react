@@ -13,11 +13,7 @@ const Cart = (props) => {
 
   return (
     <div className={styles.cart}>
-      <CartList
-        // items={props.cartItems}
-        // addCartItem={props.addCartItem}
-        // removeCartItem={props.removeCartItem}
-      ></CartList>
+      <CartList></CartList>
       <div className={styles.total}>
         <div className={styles["total-label"]}>Total</div>{" "}
         <div className={styles["total-value"]}>${total.toFixed(2)}</div>
