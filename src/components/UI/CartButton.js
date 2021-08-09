@@ -1,25 +1,29 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import CartContext from "../../store/cart-context";
 import styles from "./CartButton.module.css";
 
 const CartButton = (props) => {
-    const [buttonEffect, setButtonEffect] = useState(false);
-    const cartCtx = useContext(CartContext);
-    const { items } = cartCtx;
-    
-    useEffect(() => {
-      
-        return () => {
-            setTimeout(() => {
-                setButtonEffect(false)
-            }, 100)
-            setButtonEffect(true)
-        }
-        
-    }, [items])
+  const [buttonEffect, setButtonEffect] = useState(false);
+  const cartCtx = useContext(CartContext);
+  const { items } = cartCtx;
+  const isMount = useRef(true);
 
-    const clickHandler = () => {
-        props.toggleModal();
+  useEffect(() => {
+    if (isMount.current) {
+      isMount.current = false;
+    } else {
+      setButtonEffect(true);
+      const timer = setTimeout(() => {
+        setButtonEffect(false);
+      }, 100);
+      return () => {
+        clearTimeout(timer);
+      }
+    }
+  }, [items]);
+
+  const clickHandler = () => {
+    props.toggleModal();
   };
 
   const getTotalItems = (cartItemsArray) => {
@@ -31,8 +35,14 @@ const CartButton = (props) => {
   };
 
   return (
-    <button className={`${styles.cartButton} ${buttonEffect ? styles.cartButtonEffect : "puts"}`} onClick={clickHandler}>
-      <span className={styles["cart-label"]}>🛒 Your Cart</span><span className={styles["items-quantity"]}>{getTotalItems(items)}</span>
+    <button
+      className={`${styles.cartButton} ${
+        buttonEffect ? styles.cartButtonEffect : "puts"
+      }`}
+      onClick={clickHandler}
+    >
+      <span className={styles["cart-label"]}>🛒 Your Cart</span>
+      <span className={styles["items-quantity"]}>{getTotalItems(items)}</span>
     </button>
   );
 };
