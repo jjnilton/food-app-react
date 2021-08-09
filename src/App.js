@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import Header from "./components/UI/Header";
 import FoodList from "./components/Food/FoodList";
 import Modal from "./components/UI/Modal";
@@ -30,51 +30,47 @@ const data = [
   },
 ];
 
+const cartReducer = (state, action) => {
+  const elementIndex = state.findIndex(item => item.id === action.item.id)
+  if (action.type === "ADD") {
+    // this validation should be on the form...
+    if (action.quantity > 0) {
+      // increase amount if item exists
+      if (elementIndex !== -1) {
+        const updatedItems = [...state]
+        updatedItems[elementIndex] = {...updatedItems[elementIndex], quantity: updatedItems[elementIndex].quantity + action.quantity}
+        return updatedItems
+      } else {
+        // add new item
+        return [...state, {...action.item, quantity: action.quantity}]
+      }
+    }
+  }
+  if (action.type === "DEL") {
+    // decrease item amount if quantity > 1
+    if (elementIndex !== -1 && action.item.quantity > 1) {
+      const updatedItems = [...state]
+      updatedItems[elementIndex] = {...updatedItems[elementIndex], quantity: updatedItems[elementIndex].quantity - action.quantity}
+      return updatedItems
+    } else {
+      // remove item from cart
+      const updatedItems = state.filter(item => item.id !== action.item.id)
+      return updatedItems
+    }
+  }
+  return [];
+};
+
 const App = () => {
-  const [cartItems, setCartItems] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [cartItems, dispatchCartItems] = useReducer(cartReducer, []);
 
   const addToCartHandler = (cartFoodObject, quantity = 1) => {
-    if (quantity > 0) {
-      setCartItems((prevCartItems) => {
-        const elementIndex = prevCartItems.findIndex((item) => {
-          return cartFoodObject.id === item.id;
-        });
-
-        if (elementIndex !== -1) {
-          const prevCartItemsCopy = [...prevCartItems];
-          prevCartItemsCopy[elementIndex] = {
-            ...prevCartItemsCopy[elementIndex],
-            quantity: prevCartItemsCopy[elementIndex].quantity + quantity,
-          };
-          return prevCartItemsCopy;
-        } else {
-          return [...prevCartItems, { ...cartFoodObject, quantity: quantity }];
-        }
-      });
-    }
+    dispatchCartItems({ type: "ADD", item: cartFoodObject, quantity: quantity });
   };
 
-  const handleRemoveFromCart = (cartItem, quantity = 1) => {
-    setCartItems((prevCartItems) => {
-      const elementIndex = prevCartItems.findIndex((item) => {
-        return cartItem.id === item.id;
-      });
-
-      if (elementIndex !== -1 && cartItem.quantity > 1) {
-        const prevCartItemsCopy = [...prevCartItems];
-        prevCartItemsCopy[elementIndex] = {
-          ...prevCartItemsCopy[elementIndex],
-          quantity: prevCartItemsCopy[elementIndex].quantity - quantity,
-        };
-        return prevCartItemsCopy;
-      } else {
-        const filteredArray = prevCartItems.filter((item) => {
-          return item.id !== cartItem.id;
-        });
-        return filteredArray;
-      }
-    });
+  const handleRemoveFromCart = (cartFoodObject, quantity = 1) => {
+    dispatchCartItems({ type: "DEL", item: cartFoodObject, quantity: quantity});
   };
 
   const toggleModal = () => {
