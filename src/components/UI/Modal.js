@@ -27,9 +27,9 @@ const Modal = (props) => {
         <div className={styles.modal}>
           <Card>
             <Cart
-              cartItems={props.cartItems}
-              addCartItem={props.addCartItem}
-              removeCartItem={props.removeCartItem}
+              // cartItems={props.cartItems}
+              // addCartItem={props.addCartItem}
+              // removeCartItem={props.removeCartItem}
             ></Cart>
             <div className={styles["button-container"]}>
               <button className={styles.close} onClick={props.toggleModal}>Close</button>

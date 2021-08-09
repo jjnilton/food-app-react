@@ -10,7 +10,7 @@ const FoodList = (props) => {
         name={item.name}
         description={item.description}
         price={item.price}
-        onAddToCart={props.onAddToCart}
+        // onAddToCart={props.onAddToCart}
       ></FoodListItem>
     );
   });

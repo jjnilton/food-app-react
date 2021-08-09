@@ -1,16 +1,22 @@
 import CartList from "./CartList";
 import styles from "./Cart.module.css";
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
+
 const Cart = (props) => {
-  const total = props.cartItems.reduce((accumulator, item) => {
+  const cartContext = useContext(CartContext);
+  const { items } = cartContext;
+
+  const total = items.reduce((accumulator, item) => {
     return accumulator + item.price * item.quantity;
   }, 0);
 
   return (
     <div className={styles.cart}>
       <CartList
-        items={props.cartItems}
-        addCartItem={props.addCartItem}
-        removeCartItem={props.removeCartItem}
+        // items={props.cartItems}
+        // addCartItem={props.addCartItem}
+        // removeCartItem={props.removeCartItem}
       ></CartList>
       <div className={styles.total}>
         <div className={styles["total-label"]}>Total</div>{" "}

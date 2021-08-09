@@ -1,19 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import CartContext from "../../store/cart-context";
 import styles from "./CartButton.module.css";
 
 const CartButton = (props) => {
-    const [effect, setEffect] = useState(false);
+    const [buttonEffect, setButtonEffect] = useState(false);
+    const cartCtx = useContext(CartContext);
+    const { items } = cartCtx;
     
     useEffect(() => {
-
+      
         return () => {
             setTimeout(() => {
-                setEffect(false)
+                setButtonEffect(false)
             }, 100)
-            setEffect(true)
+            setButtonEffect(true)
         }
         
-    }, [props.items])
+    }, [items])
 
     const clickHandler = () => {
         props.toggleModal();
@@ -28,8 +31,8 @@ const CartButton = (props) => {
   };
 
   return (
-    <button className={`${styles.cartButton} ${effect ? styles.cartButtonEffect : "puts"}`} onClick={clickHandler}>
-      <span className={styles["cart-label"]}>🛒 Your Cart</span><span className={styles["items-quantity"]}>{getTotalItems(props.items)}</span>
+    <button className={`${styles.cartButton} ${buttonEffect ? styles.cartButtonEffect : "puts"}`} onClick={clickHandler}>
+      <span className={styles["cart-label"]}>🛒 Your Cart</span><span className={styles["items-quantity"]}>{getTotalItems(items)}</span>
     </button>
   );
 };

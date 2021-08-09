@@ -1,8 +1,12 @@
 import CartListItem from "./CartListItem";
 import styles from "./CartList.module.css";
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
 
 const CartList = (props) => {
-  const cartItems = props.items.map((item) => {
+  const cartContext = useContext(CartContext);
+  const { items } = cartContext;
+  const cartItems = items.map((item) => {
     return (
       <CartListItem
         item={item}
@@ -10,8 +14,8 @@ const CartList = (props) => {
         name={item.name}
         price={item.price}
         quantity={item.quantity}
-        addCartItem={props.addCartItem}
-        removeCartItem={props.removeCartItem}
+        // addCartItem={props.addCartItem}
+        // removeCartItem={props.removeCartItem}
       ></CartListItem>
     );
   });

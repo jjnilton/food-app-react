@@ -1,8 +1,12 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import CartContext from "../../store/cart-context";
 import Button from "../UI/Button";
 import styles from "./FoodListItem.module.css";
 
 const FoodListItem = (props) => {
+
+  const cartContext = useContext(CartContext);
+
   const cartItem = {
     id: props.id,
     name: props.name,
@@ -12,7 +16,8 @@ const FoodListItem = (props) => {
   const quantityRef = useRef();
 
   const handleClick = () => {
-    props.onAddToCart(cartItem, +quantityRef.current.value);
+    cartContext.addToCart(cartItem, +quantityRef.current.value);
+    // props.onAddToCart(cartItem, +quantityRef.current.value);
   };
 
   return (
