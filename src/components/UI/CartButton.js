@@ -37,7 +37,7 @@ const CartButton = (props) => {
   return (
     <button
       className={`${styles.cartButton} ${
-        buttonEffect ? styles.cartButtonEffect : "puts"
+        buttonEffect ? styles.cartButtonEffect : ""
       }`}
       onClick={clickHandler}
     >

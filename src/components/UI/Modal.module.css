@@ -9,6 +9,21 @@
   z-index: 1;
 }
 
+.backdrop {
+  animation-name: fade;
+  animation-duration: 500ms;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
 .modal {
   z-index: 2;
   position: absolute;
@@ -18,6 +33,22 @@
   min-width: 300px;
   width: 90%;
   max-width: 550px;
+}
+
+.modal {
+  animation-name: slide-up;
+  animation-duration: 500ms;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -15%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -25%);
+  }
 }
 
 .button-container {

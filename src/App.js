@@ -3,6 +3,7 @@ import Header from "./components/UI/Header";
 import FoodList from "./components/Food/FoodList";
 import Modal from "./components/UI/Modal";
 import CartProvider from "./store/CartProvider";
+import styles from "./App.module.css";
 
 const data = [
   {
@@ -54,7 +55,9 @@ const App = () => {
   return (
     <CartProvider>
       <Header toggleModal={toggleModal}></Header>
-      <FoodList data={data}></FoodList>
+      <main className={styles.main}>
+        <FoodList data={data}></FoodList>
+      </main>
       {modalVisible && (
         <Modal
           toggleModal={toggleModal}
