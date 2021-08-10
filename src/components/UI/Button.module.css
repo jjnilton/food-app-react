@@ -7,7 +7,8 @@
   margin: 5px 0;
   width: 75%;
   cursor: pointer;
-  float: right;
+  display: block;
+  margin-left: auto;
   font-weight: bold;
 }
 

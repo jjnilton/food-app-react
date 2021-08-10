@@ -17,7 +17,7 @@ const FoodListItem = (props) => {
   const quantityRef = useRef();
 
   const handleClick = () => {
-    if (+quantityRef.current.value > 0) {
+    if (+quantityRef.current.value > 0 && +quantityRef.current.value < 6) {
       setInvalidInput(false)
       cartContext.addToCart(cartItem, +quantityRef.current.value);
     } else {
@@ -37,10 +37,10 @@ const FoodListItem = (props) => {
           <label className={styles.label} htmlFor={`item_${props.id}`}>
             Amount
           </label>
-          <Input ref={quantityRef} id={`item_${props.id}`} type="number" defaultValue="1" min="1" className={styles.input}></Input>
-          {invalidInput && <div className={styles["invalid-input"]}>Invalid input</div>}
+          <Input ref={quantityRef} className={styles.input} id={`item_${props.id}`} type="number" defaultValue="1" min="1" max="5"></Input>
         </div>
         <Button type="button" value="+ Add" action={handleClick}></Button>
+        {invalidInput ? <div className={styles["invalid-input"]}>Invalid input</div> : <div className={styles["valid-input"]}></div>}
       </div>
     </li>
   );

@@ -24,9 +24,9 @@
 
 .items-quantity {
   background-color: brown;
-  padding: 5px 15px;
+  padding: 5px;
   border-radius: 30px;
   font-weight: bold;
   display: inline-block;
-  width: 50px;
+  width: 35px;
 }

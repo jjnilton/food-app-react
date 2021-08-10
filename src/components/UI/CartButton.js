@@ -42,7 +42,7 @@ const CartButton = (props) => {
       onClick={clickHandler}
     >
       <span className={styles["cart-label"]}>🛒 Your Cart</span>
-      <span className={styles["items-quantity"]}>{getTotalItems(items)}</span>
+      <span className={styles["items-quantity"]}>{getTotalItems(items) < 99 ? getTotalItems(items) : "99+"}</span>
     </button>
   );
 };

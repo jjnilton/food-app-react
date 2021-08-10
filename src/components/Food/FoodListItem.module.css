@@ -40,3 +40,7 @@
   text-align: right;
   color: red;
 }
+
+.valid-input {
+  height: 16px;
+}
