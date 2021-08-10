@@ -32,7 +32,7 @@ const FoodListItem = (props) => {
         <div className={styles.price}>${props.price}</div>
       </div>
       <div>
-        <div>
+        <div className="input-data">
           <label className={styles.label} htmlFor={`item_${props.id}`}>
             Amount
           </label>
