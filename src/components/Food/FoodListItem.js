@@ -1,6 +1,7 @@
 import { useContext, useState, useRef } from "react";
 import CartContext from "../../store/cart-context";
 import Button from "../UI/Button";
+import Input from "../UI/Input";
 import styles from "./FoodListItem.module.css";
 
 const FoodListItem = (props) => {
@@ -36,14 +37,7 @@ const FoodListItem = (props) => {
           <label className={styles.label} htmlFor={`item_${props.id}`}>
             Amount
           </label>
-          <input
-            className={styles.input}
-            id={`item_${props.id}`}
-            type="number"
-            defaultValue="1"
-            min="1"
-            ref={quantityRef}
-          ></input>
+          <Input ref={quantityRef} id={`item_${props.id}`} type="number" defaultValue="1" min="1" className={styles.input}></Input>
           {invalidInput && <div className={styles["invalid-input"]}>Invalid input</div>}
         </div>
         <Button type="button" value="+ Add" action={handleClick}></Button>
