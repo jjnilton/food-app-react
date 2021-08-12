@@ -3,3 +3,7 @@
   margin: 0;
   width: 100%;
 }
+
+.status-message {
+  padding: 10px;
+}
