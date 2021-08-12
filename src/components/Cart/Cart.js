@@ -2,6 +2,8 @@ import CartList from "./CartList";
 import styles from "./Cart.module.css";
 import { useContext } from "react";
 import CartContext from "../../store/cart-context";
+import Modal from "../UI/Modal";
+import Card from "../UI/Card";
 
 const Cart = (props) => {
   const cartContext = useContext(CartContext);
@@ -12,13 +14,15 @@ const Cart = (props) => {
   }, 0);
 
   return (
-    <div className={styles.cart}>
-      <CartList></CartList>
-      <div className={styles.total}>
-        <div className={styles["total-label"]}>Total</div>{" "}
-        <div className={styles["total-value"]}>${total.toFixed(2)}</div>
-      </div>
-    </div>
+    <Modal toggleCart={props.toggleCart}>
+        <div className={styles.cart}>
+          <CartList></CartList>
+          <div className={styles.total}>
+            <div className={styles["total-label"]}>Total</div>
+            <div className={styles["total-value"]}>${total.toFixed(2)}</div>
+          </div>
+        </div>
+    </Modal>
   );
 };
 

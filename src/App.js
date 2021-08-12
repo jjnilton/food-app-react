@@ -1,38 +1,38 @@
 import { useState, useEffect } from "react";
 import Header from "./components/UI/Header";
 import FoodList from "./components/Food/FoodList";
-import Modal from "./components/UI/Modal";
 import CartProvider from "./store/CartProvider";
 import styles from "./App.module.css";
+import Cart from "./components/Cart/Cart";
 
 const App = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [cartVisible, setCartVisible] = useState(false);
 
-  const toggleModal = () => {
-    setModalVisible((prevState) => {
+  const toggleCart = () => {
+    setCartVisible((prevState) => {
       return !prevState;
     });
   };
 
   // probably not the best way
   useEffect(() => {
-    if (modalVisible) {
+    if (cartVisible) {
       document.getElementById("modal").style = "display: block";
       document.getElementById("backdrop").style = "display: block";
     } else {
       document.getElementById("modal").style = "display: none";
       document.getElementById("backdrop").style = "display: none";
     }
-  }, [modalVisible]);
+  }, [cartVisible]);
 
   return (
     <CartProvider>
-      <Header toggleModal={toggleModal}></Header>
+      <Header toggleCart={toggleCart}></Header>
       <main className={styles.main}>
         <FoodList></FoodList>
       </main>
-      {modalVisible && (
-        <Modal toggleModal={toggleModal} modalVisible={modalVisible}></Modal>
+      {cartVisible && (
+        <Cart toggleCart={toggleCart} cartVisible={cartVisible}></Cart>
       )}
     </CartProvider>
   );

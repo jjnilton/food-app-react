@@ -5,7 +5,7 @@ import Cart from "../Cart/Cart";
 
 const Backdrop = (props) => {
   const clickHandler = () => {
-    props.toggleModal();
+    props.toggleCart();
   };
 
   return <div onClick={clickHandler} className={styles.backdrop}></div>;
@@ -16,25 +16,18 @@ const Modal = (props) => {
     console.log("placing order...");
   };
 
+  console.log(props)
+  console.log(props.children)
+
   return (
     <>
       {ReactDOM.createPortal(
-        <Backdrop toggleModal={props.toggleModal} />,
+        <Backdrop toggleCart={props.toggleCart} />,
         document.getElementById("backdrop")
       )}
       {ReactDOM.createPortal(
         <div className={styles.modal}>
-          <Card>
-            <Cart></Cart>
-            <div className={styles["button-container"]}>
-              <button className={styles.close} onClick={props.toggleModal}>
-                Close
-              </button>
-              <button className={styles.action} onClick={handleAction}>
-                Order
-              </button>
-            </div>
-          </Card>
+          <Card>{props.children}</Card>
         </div>,
         document.getElementById("modal")
       )}

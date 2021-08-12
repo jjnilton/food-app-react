@@ -7,7 +7,7 @@ const Header = (props) => {
       <h1>Food App</h1>
       <CartButton
         items={props.cartItems}
-        toggleModal={props.toggleModal}
+        toggleCart={props.toggleCart}
         placeOrder={props.placeOrder}
       ></CartButton>
     </header>

@@ -23,7 +23,7 @@ const CartButton = (props) => {
   }, [items]);
 
   const clickHandler = () => {
-    props.toggleModal();
+    props.toggleCart();
   };
 
   const getTotalItems = (cartItemsArray) => {
