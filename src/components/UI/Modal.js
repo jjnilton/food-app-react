@@ -1,7 +1,6 @@
 import styles from "./Modal.module.css";
 import ReactDOM from "react-dom";
 import Card from "./Card";
-import Cart from "../Cart/Cart";
 
 const Backdrop = (props) => {
   const clickHandler = () => {
@@ -16,9 +15,6 @@ const Modal = (props) => {
     console.log("placing order...");
   };
 
-  console.log(props)
-  console.log(props.children)
-
   return (
     <>
       {ReactDOM.createPortal(
@@ -27,7 +23,9 @@ const Modal = (props) => {
       )}
       {ReactDOM.createPortal(
         <div className={styles.modal}>
-          <Card>{props.children}</Card>
+          <Card>
+            {props.children}
+          </Card>
         </div>,
         document.getElementById("modal")
       )}

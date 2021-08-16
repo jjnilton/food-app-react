@@ -1,0 +1,80 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  /* padding: 5px; */
+  /* background: lightgoldenrodyellow; */
+  margin: 5px;
+}
+
+.summary ul {
+  flex-grow: 1;
+}
+
+.summary ul,
+.summary li {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.summary ul {
+  font-size: 14px;
+}
+
+/* .summary li:nth-child(odd) {
+  background-color: #eee;
+}
+
+.summary li:nth-child(even) {
+  background-color: #ddd;
+} */
+
+.summary .shipping, .summary .subtotal, .summary .total, .summary .coupon {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary .coupon {
+  color: green;
+}
+
+.summary .subtotal {
+  border-top: 1px solid black;
+}
+
+.summary form .invalid {
+  background-color: lightcoral;
+}
+
+.summary .coupon-form {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+}
+
+.summary .coupon-form input {
+  width: 100px;
+}
+
+.summary .coupon-form label {
+  font-size: 12px;
+}
+
+.summary .coupon-form button {
+  background-color: brown;
+  border: 2px solid brown;
+  color: white;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.summary .coupon-form button:active {
+  filter: brightness(1.5);
+}
+
+.summary .coupon-form button:disabled {
+  background-color: lightgray;
+  color: #777;
+  border: 2px solid lightgray;
+  pointer-events: none;
+}

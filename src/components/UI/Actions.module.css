@@ -1,0 +1,43 @@
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0px 20px 10px 20px;
+}
+
+.actions > button {
+  border-radius: 20px;
+  margin-left: 10px;
+  padding: 5px;
+  width: 120px;
+  cursor: pointer;
+}
+
+.close {
+  background-color: white;
+  border: 1px solid brown;
+  color: brown;
+}
+
+.actions button[value="back"], .actions button[value="close"] {
+  background-color: white;
+  border: 1px solid brown;
+  color: brown;
+}
+
+.actions button[value="back"]:active, .actions button[value="close"]:active {
+  background-color: brown;
+  border: 1px solid brown;
+  color: white;
+}
+
+.actions button[value="action"] {
+  background-color: brown;
+  border: 1px solid brown;
+  color: white;
+}
+
+.actions button[value="action"]:active {
+  background-color: white;
+  border: 1px solid brown;
+  color: brown;
+}

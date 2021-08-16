@@ -1,0 +1,64 @@
+.checkout-form fieldset {
+  /* color: red; */
+  /* border: 1px solid red; */
+  /* border-color: red; */
+  border-radius: 5px;
+}
+
+.checkout-form input.invalid {
+  background-color: lightcoral;
+}
+
+.checkout-form .first-and-second-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-form .first-and-second-name > div {
+  width: 49%;
+}
+
+.checkout-form .first-and-second-name input {
+  width: 100%;
+}
+
+.checkout-form input[name="document"] {
+  width: 100%;
+}
+
+.checkout-form label:not(.payment-info label) {
+  display: block;
+}
+
+.checkout-form label:not(.payment-options label) {
+  font-size: 0.8em;
+}
+
+.checkout-form input[name="address"] {
+  width: 100%;
+}
+
+.checkout-form .payment-options {
+  white-space: nowrap;
+}
+
+.checkout-form input[name="credit-card-number"], input[name="card-owner"] {
+  width: 100%;
+}
+
+.checkout-form .payment-info .credit-card-info label:not(label[for="same-name"], label[for="card-owner"]) {
+  display: block;
+}
+
+.checkout-form .payment-info .secret-and-expiration {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-form .secret-and-expiration > div {
+  width: 49%;
+}
+
+.checkout-form .secret-and-expiration input {
+  width: 100%;
+}

@@ -1,0 +1,14 @@
+.checkout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkout > * {
+  flex: 1 1 45%;
+}
+
+.checkout .actions {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: flex-end;
+}
