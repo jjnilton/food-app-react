@@ -7,7 +7,7 @@ const CheckoutSummary = (props) => {
 
   const cartItems = props.summary.items.map((item) => {
     return (
-      <li>
+      <li key={item.id}>
         {item.name} (x{item.quantity})
       </li>
     );

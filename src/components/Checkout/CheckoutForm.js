@@ -4,8 +4,6 @@ import useInput from "../../hooks/use-input";
 
 const CheckoutForm = (props) => {
   const [checkedRadio, setCheckedRadio] = useState("credit-card");
-  const [checkedBox, setCheckedBox] = useState(false);
-
   const firstNameRef = useRef();
   const lastNameRef = useRef();
 
@@ -116,9 +114,15 @@ const CheckoutForm = (props) => {
     addressChange(event);
   };
 
-  const handleCheckbox = () => {
-    setCheckedBox(prevCheckedBox => !prevCheckedBox)
-  }
+  const handleCheckbox = (event) => {
+    if (event.target.checked) {
+      creditCardOwnerChange({
+        target: { value: `${firstNameValue} ${lastNameValue}` },
+      });
+    } else {
+      creditCardOwnerChange({ target: { value: "" } });
+    }
+  };
 
   const creditCardInfoValid =
     creditCardValid &&
@@ -153,7 +157,9 @@ const CheckoutForm = (props) => {
               onChange={firstNameChange}
               onBlur={firstNameBlur}
             />
-            {firstNameError && <div className={styles["invalid-message"]}>Invalid name.</div>}
+            {firstNameError && (
+              <div className={styles["invalid-message"]}>Invalid name.</div>
+            )}
           </div>
           <div>
             <label htmlFor="last-name">Last Name</label>
@@ -166,7 +172,11 @@ const CheckoutForm = (props) => {
               onChange={lastNameChange}
               onBlur={lastNameBlur}
             />
-            {lastNameError && <div className={styles["invalid-message"]}>Invalid last name.</div>}
+            {lastNameError && (
+              <div className={styles["invalid-message"]}>
+                Invalid last name.
+              </div>
+            )}
           </div>
         </div>
         <label htmlFor="document">Document</label>
@@ -178,7 +188,9 @@ const CheckoutForm = (props) => {
           onChange={documentChange}
           onBlur={documentBlur}
         />
-        {documentError && <div className={styles["invalid-message"]}>Invalid document.</div>}
+        {documentError && (
+          <div className={styles["invalid-message"]}>Invalid document.</div>
+        )}
       </fieldset>
       <fieldset className={styles["address-info"]}>
         <legend>Delivery info</legend>
@@ -191,7 +203,9 @@ const CheckoutForm = (props) => {
           onChange={handleAddressChange}
           onBlur={addressBlur}
         />
-        {addressError && <div className={styles["invalid-message"]}>Invalid address.</div>}
+        {addressError && (
+          <div className={styles["invalid-message"]}>Invalid address.</div>
+        )}
       </fieldset>
       <fieldset className={styles["payment-info"]}>
         <legend>Payment information</legend>
@@ -226,7 +240,11 @@ const CheckoutForm = (props) => {
               onBlur={creditCardBlur}
               value={creditCardValue}
             />
-            {creditCardError && <div className={styles["invalid-message"]}>Invalid credit card number.</div>}
+            {creditCardError && (
+              <div className={styles["invalid-message"]}>
+                Invalid credit card number.
+              </div>
+            )}
             <div className={styles["secret-and-expiration"]}>
               <div>
                 <label htmlFor="credit-card-secret">Secret</label>
@@ -239,7 +257,11 @@ const CheckoutForm = (props) => {
                   onBlur={creditCardSecretBlur}
                   value={creditCardSecretValue}
                 />
-                {creditCardSecretError && <div className={styles["invalid-message"]}>Invalid card secret.</div>}
+                {creditCardSecretError && (
+                  <div className={styles["invalid-message"]}>
+                    Invalid card secret.
+                  </div>
+                )}
               </div>
               <div>
                 <label htmlFor="expiration-date">Expiration Date</label>
@@ -253,21 +275,39 @@ const CheckoutForm = (props) => {
                   onBlur={creditCardExpirationBlur}
                   value={creditCardExpirationValue}
                 />
-                {creditCardSecretError && <div className={styles["invalid-message"]}>Invalid expiration.</div>}
+                {creditCardSecretError && (
+                  <div className={styles["invalid-message"]}>
+                    Invalid expiration.
+                  </div>
+                )}
               </div>
             </div>
-            <label htmlFor="card-owner">Name</label>
-            <input name="same-name" type="checkbox" onChange={handleCheckbox} />
-            <label htmlFor="same-name">Same as client</label>
+            <div className={styles["credit-card-owner-container"]}>
+              <label htmlFor="card-owner">Name</label>
+              <div>
+                <input
+                  name="same-name"
+                  type="checkbox"
+                  onChange={handleCheckbox}
+                />
+                <label className={styles["same-name"]} htmlFor="same-name">
+                  Copy from user info
+                </label>
+              </div>
+            </div>
             <input
               className={creditCardOwnerError && styles.invalid}
               name="card-owner"
               type="text"
-              defaultValue={checkedBox ? `${firstNameValue} ${lastNameValue}` : creditCardOwnerValue}
+              value={creditCardOwnerValue}
               onChange={creditCardOwnerChange}
               onBlur={creditCardOwnerBlur}
             />
-            {creditCardOwnerError && <div className={styles["invalid-message"]}>Invalid credit card name.</div>}
+            {creditCardOwnerError && (
+              <div className={styles["invalid-message"]}>
+                Invalid credit card name.
+              </div>
+            )}
           </div>
         )}
         {checkedRadio === "libera-pay" && (

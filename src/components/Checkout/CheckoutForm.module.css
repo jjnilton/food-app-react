@@ -4,6 +4,8 @@
 
 .checkout-form input.invalid {
   background-color: lightcoral;
+  border-color: brown;
+  border: 1px solid brown;
 }
 
 .checkout-form .first-and-second-name {
@@ -45,6 +47,23 @@
 
 .checkout-form .payment-info .credit-card-info label:not(label[for="same-name"], label[for="card-owner"]) {
   display: block;
+}
+
+.checkout-form .payment-info .credit-card-info .credit-card-owner-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-form .payment-info .credit-card-info .credit-card-owner-container > * {
+  margin-top: auto;
+}
+
+.checkout-form .payment-info .credit-card-info .credit-card-owner-container > div > input {
+  margin: 0 3px;
+}
+
+.checkout-form .payment-info .credit-card-info label.same-name {
+  font-size: 12px;
 }
 
 .checkout-form .payment-info .secret-and-expiration {
