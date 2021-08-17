@@ -119,6 +119,7 @@ const CheckoutForm = (props) => {
       creditCardOwnerChange({
         target: { value: `${firstNameValue} ${lastNameValue}` },
       });
+      creditCardOwnerBlur();
     } else {
       creditCardOwnerChange({ target: { value: "" } });
     }
@@ -149,7 +150,7 @@ const CheckoutForm = (props) => {
           <div>
             <label htmlFor="first-name">First Name</label>
             <input
-              className={firstNameError && styles.invalid}
+              className={firstNameError ? styles.invalid : undefined}
               ref={firstNameRef}
               name="first-name"
               type="text"
@@ -164,7 +165,7 @@ const CheckoutForm = (props) => {
           <div>
             <label htmlFor="last-name">Last Name</label>
             <input
-              className={lastNameError && styles.invalid}
+              className={lastNameError ? styles.invalid : undefined }
               ref={lastNameRef}
               name="last-name"
               type="text"
@@ -181,7 +182,7 @@ const CheckoutForm = (props) => {
         </div>
         <label htmlFor="document">Document</label>
         <input
-          className={documentError && styles.invalid}
+          className={documentError ? styles.invalid : undefined}
           name="document"
           type="text"
           value={documentValue}
@@ -196,7 +197,7 @@ const CheckoutForm = (props) => {
         <legend>Delivery info</legend>
         <label htmlFor="address">Address</label>
         <input
-          className={addressError && styles.invalid}
+          className={addressError ? styles.invalid : undefined}
           name="address"
           type="text"
           value={addressValue}
@@ -233,7 +234,7 @@ const CheckoutForm = (props) => {
           <div className={styles["credit-card-info"]}>
             <label htmlFor="credit-card-number">Number</label>
             <input
-              className={creditCardError && styles.invalid}
+              className={creditCardError ? styles.invalid : undefined}
               name="credit-card-number"
               type="text"
               onChange={creditCardChange}
@@ -249,7 +250,7 @@ const CheckoutForm = (props) => {
               <div>
                 <label htmlFor="credit-card-secret">Secret</label>
                 <input
-                  className={creditCardSecretError && styles.invalid}
+                  className={creditCardSecretError ? styles.invalid : undefined}
                   name="credit-card-secret"
                   type="text"
                   maxLength="3"
@@ -266,7 +267,7 @@ const CheckoutForm = (props) => {
               <div>
                 <label htmlFor="expiration-date">Expiration Date</label>
                 <input
-                  className={creditCardExpirationError && styles.invalid}
+                  className={creditCardExpirationError ? styles.invalid : undefined}
                   name="expiration-date"
                   type="text"
                   placeholder="YY/mm"
@@ -296,7 +297,7 @@ const CheckoutForm = (props) => {
               </div>
             </div>
             <input
-              className={creditCardOwnerError && styles.invalid}
+              className={creditCardOwnerError ? styles.invalid : undefined}
               name="card-owner"
               type="text"
               value={creditCardOwnerValue}

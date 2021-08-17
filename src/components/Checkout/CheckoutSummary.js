@@ -52,7 +52,7 @@ const CheckoutSummary = (props) => {
             className={
               !props.summary.couponStatus && userInteracted
                 ? styles.invalid
-                : ""
+                : undefined
             }
             ref={couponRef}
             type="text"

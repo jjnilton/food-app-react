@@ -94,7 +94,7 @@ const Checkout = (props) => {
 
   return (
     <>
-      <p style={{ "text-align": "center" }}>
+      <p style={{ textAlign : "center" }}>
         Checkout form: it's almost done....
       </p>
       <div className={styles.checkout}>
