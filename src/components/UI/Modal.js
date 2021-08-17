@@ -11,9 +11,6 @@ const Backdrop = (props) => {
 };
 
 const Modal = (props) => {
-  const handleAction = () => {
-    console.log("placing order...");
-  };
 
   return (
     <>

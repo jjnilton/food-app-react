@@ -14,7 +14,7 @@ const useInput = (validator) => {
 
   const handleBlur = (event) => {
     setUserInteracted(true);
-    setEnteredValue(event.target.value);
+    // setEnteredValue(value);
   };
 
   return {

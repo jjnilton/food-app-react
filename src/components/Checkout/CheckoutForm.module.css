@@ -1,7 +1,4 @@
 .checkout-form fieldset {
-  /* color: red; */
-  /* border: 1px solid red; */
-  /* border-color: red; */
   border-radius: 5px;
 }
 
@@ -61,4 +58,9 @@
 
 .checkout-form .secret-and-expiration input {
   width: 100%;
+}
+
+.checkout-form div.invalid-message {
+  color: red;
+  font-size: 12px;
 }

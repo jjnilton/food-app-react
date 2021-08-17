@@ -33,7 +33,7 @@ const Cart = (props) => {
             </div>
           </div>
           <Actions>
-            <button onClick={props.goBack} value="close">
+            <button onClick={props.toggleCart} value="close">
               Close
             </button>
             <button onClick={toggleCheckout} value="action">

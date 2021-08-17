@@ -1,10 +1,12 @@
-.checkout {
+.checkout .container {
   display: flex;
   flex-wrap: wrap;
+  margin: 15px;
 }
 
-.checkout > * {
+.checkout .container > * {
   flex: 1 1 45%;
+  margin: 5px;
 }
 
 .checkout .actions {

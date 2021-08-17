@@ -25,7 +25,6 @@ const COUPONS = [
 ];
 
 const Checkout = (props) => {
-  const [orderInfo, setOrderInfo] = useState({});
   const cartContext = useContext(CartContext);
   const { items } = cartContext;
   const [shippingCost, setShippingCost] = useState(0);
@@ -57,11 +56,11 @@ const Checkout = (props) => {
   const summary = {
     items,
     productsTotal: props.total,
-    shipping: shippingCost,
+    shipping: +shippingCost.toFixed(2),
     total: +(checkoutTotal + shippingCost).toFixed(2),
     coupon: coupon.coupon.code,
     couponStatus: coupon.applied,
-    discount,
+    discount: +discount.toFixed(2),
   };
 
   const handleCoupon = (code) => {
@@ -85,13 +84,13 @@ const Checkout = (props) => {
     setCheckoutTotal((prevCheckoutTotal) => {
       return prevCheckoutTotal - discount;
     });
-  }, [coupon]);
+  }, [coupon, discount]);
 
   useEffect(() => {
     if (coupon.coupon.discount === "free-shipping") {
       setDiscount(+shippingCost);
     }
-  }, [shippingCost]);
+  }, [shippingCost, coupon.coupon.discount]);
 
   return (
     <>
@@ -99,17 +98,23 @@ const Checkout = (props) => {
         Checkout form: it's almost done....
       </p>
       <div className={styles.checkout}>
-        <CheckoutForm
-          handleSubmit={handleSubmit}
-          sendAddress={getAddress}
-        ></CheckoutForm>
-        <CheckoutSummary
-          summary={summary}
-          handleCoupon={handleCoupon}
-        ></CheckoutSummary>
+        <div className={styles.container}>
+          <CheckoutForm
+            handleSubmit={handleSubmit}
+            sendAddress={getAddress}
+          ></CheckoutForm>
+          <CheckoutSummary
+            summary={summary}
+            handleCoupon={handleCoupon}
+          ></CheckoutSummary>
+        </div>
         <Actions>
-          <button onClick={props.goBack} value="back">Back</button>
-          <button form="checkout-form" value="action">Place Order</button>
+          <button onClick={props.goBack} value="back">
+            Back
+          </button>
+          <button form="checkout-form" value="action">
+            Place Order
+          </button>
         </Actions>
       </div>
     </>

@@ -1,6 +1,5 @@
 import styles from "./CheckoutSummary.module.css";
 import { useRef, useState } from "react";
-import Button from "../UI/Button";
 
 const CheckoutSummary = (props) => {
   const couponRef = useRef();
@@ -61,6 +60,7 @@ const CheckoutSummary = (props) => {
             onFocus={handleFocus}
           />
           <button disabled={props.summary.couponStatus}>Apply</button>
+          {!props.summary.couponStatus && userInteracted ? <div className={styles["invalid-message"]}>Invalid coupon.</div> : ""}
         </div>
       </form>
     </div>

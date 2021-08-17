@@ -1,9 +1,7 @@
 .summary {
   display: flex;
   flex-direction: column;
-  /* padding: 5px; */
-  /* background: lightgoldenrodyellow; */
-  margin: 5px;
+  /* margin: 20px; */
 }
 
 .summary ul {
@@ -77,4 +75,9 @@
   color: #777;
   border: 2px solid lightgray;
   pointer-events: none;
+}
+
+.summary .coupon-form .invalid-message {
+  color: red;
+  font-size: 12px;
 }
