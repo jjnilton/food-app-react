@@ -5,7 +5,7 @@ import CartContext from "../../store/cart-context";
 import { useContext, useEffect, useState } from "react";
 import Actions from "../UI/Actions";
 
-const ORDERS_URL = process.env.REACT_APP_FB_FOODS_URL;
+const ORDERS_URL = process.env.REACT_APP_FB_ORDERS_URL;
 
 const COUPONS = [
   {
@@ -54,17 +54,15 @@ const Checkout = (props) => {
 
     // I wanted an id
     const getLastOrderId = async () => {
-      setIsLoading(true);
       setStatusMessage("Placing Order...");
+      setIsLoading(true);
       let hasFetchedOrders = false;
       try {
         const response = await fetch(
           ORDERS_URL
         );
         if (!response.ok) {
-          throw new Error(response.status, response.statusText);
-        } else {
-          console.log("request success");
+          throw new Error(`${response.status} ${response.statusText}`);
         }
         const jsonData = await response.json();
         if (jsonData) {
@@ -81,18 +79,20 @@ const Checkout = (props) => {
           setIsLoading(false);
         } else {
           setHasError(true);
+          setIsLoading(false);
+          setHasLoaded(true);
           setStatusMessage("Something went wrong.");
-          console.log("whoops");
         }
       } catch (err) {
         setHasError(true);
+        setHasLoaded(true);
+        setIsLoading(false);
         setStatusMessage("Something went wrong.");
         console.log(err);
       }
 
       if (hasFetchedOrders) {
         setIsLoading(true);
-        console.log("posting");
         try {
           const postResponse = await fetch(
             ORDERS_URL,
@@ -122,11 +122,6 @@ const Checkout = (props) => {
       }
     };
     getLastOrderId();
-    // reset
-    setHasPosted(false);
-    setHasLoaded(false);
-    setHasError(false);
-    setIsLoading(false);
   };
 
   const totalItems = items.reduce((a, i) => {
@@ -183,9 +178,11 @@ const Checkout = (props) => {
     setHasError(false);
   };
 
+  console.log("re-render")
+
   return (
     <>
-      {(isLoading && !hasLoaded) || (!isLoading && hasLoaded && !hasPosted) ? (
+      {isLoading && !hasLoaded || !isLoading && hasLoaded && !hasPosted ? (
         <div className={styles["processing-order"]}>
           <div>{statusMessage}</div>
           {hasError && <button onClick={showCheckoutAgain}>Go back</button>}

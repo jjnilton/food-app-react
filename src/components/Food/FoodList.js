@@ -32,6 +32,8 @@ const FoodList = () => {
     fetchData();
   }, []);
 
+  console.log(data)
+
   const foodItems = data.map((item) => {
     return (
       <FoodListItem
