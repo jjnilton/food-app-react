@@ -5,11 +5,7 @@ import CartContext from "../../store/cart-context";
 import { useContext, useEffect, useState } from "react";
 import Actions from "../UI/Actions";
 
-<<<<<<< HEAD
-const FOODS_URL = process.env.REACT_APP_FB_FOODS_URL;
-=======
-const ORDERS_URL = process.env.REACT_APP_FB_ORDERS_URL;
->>>>>>> 4cac2c7 (disable button if cart is empty)
+const ORDERS_URL = process.env.REACT_APP_FB_FOODS_URL;
 
 const COUPONS = [
   {
