@@ -189,7 +189,7 @@ const Checkout = (props) => {
 
   return (
     <>
-      {isLoading && !hasLoaded || !isLoading && hasLoaded && !hasPosted ? (
+      {(isLoading && !hasLoaded) || (!isLoading && hasLoaded && !hasPosted) ? (
         <div className={styles["processing-order"]}>
           <div>{statusMessage}</div>
           {hasError && <button onClick={showCheckoutAgain}>Go back</button>}
@@ -198,7 +198,7 @@ const Checkout = (props) => {
         ""
       )}
       {hasPosted && hasLoaded && !isLoading ? (
-        <div>
+        <div className={styles["order-complete"]}>
           <div>Order complete #{orderId}</div>
           <button onClick={props.closeModal}>Close</button>
         </div>

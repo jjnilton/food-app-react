@@ -16,8 +16,8 @@ const Cart = (props) => {
   }, 0);
 
   const toggleCheckout = () => {
-    setShowCheckout((prevState) => {
-      return !showCheckout;
+    setShowCheckout((prevShowCheckout) => {
+      return !prevShowCheckout;
     });
   };
 
