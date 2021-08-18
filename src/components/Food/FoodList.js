@@ -3,34 +3,7 @@ import FoodListItem from "./FoodListItem";
 import styles from "./FoodList.module.css";
 import { useEffect, useState } from "react";
 
-const FB_URL = process.env.REACT_APP_FB_URL;
-
-// const data = [
-//   {
-//     id: 0,
-//     name: "Coxinha",
-//     description: "The stuff!",
-//     price: 21.99,
-//   },
-//   {
-//     id: 1,
-//     name: "Schnitzel",
-//     description: "A german specialty!",
-//     price: 16.99,
-//   },
-//   {
-//     id: 2,
-//     name: "Barbecue Burger",
-//     description: "America raw meaty.",
-//     price: 12.99,
-//   },
-//   {
-//     id: 3,
-//     name: "Green Bowl",
-//     description: "Healthy... and green...",
-//     price: 22.99,
-//   },
-// ];
+const FOODS_URL = process.env.REACT_APP_FB_FOODS_URL;
 
 const FoodList = () => {
   const [data, setData] = useState([]);
@@ -41,9 +14,7 @@ const FoodList = () => {
     const fetchData = async () => {
       setStatusMessage("Loading...");
       try {
-        const response = await fetch(
-          FB_URL
-        );
+        const response = await fetch(FOODS_URL);
         if (!response.ok) {
           throw new Error(response.status, response.statusText);
         }

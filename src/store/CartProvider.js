@@ -2,8 +2,8 @@ import CartContext from "./cart-context";
 import { useReducer } from "react";
 
 const cartReducer = (state, action) => {
-  const elementIndex = state.findIndex((item) => item.id === action.item.id);
   if (action.type === "ADD") {
+    const elementIndex = state.findIndex((item) => item.id === action.item.id);
     // this validation should be on the form...
     if (action.quantity > 0) {
       // increase amount if item exists
@@ -21,6 +21,7 @@ const cartReducer = (state, action) => {
     }
   }
   if (action.type === "DEL") {
+    const elementIndex = state.findIndex((item) => item.id === action.item.id);
     // decrease item amount if quantity > 1
     if (elementIndex !== -1 && action.item.quantity > 1) {
       const updatedItems = [...state];
@@ -34,6 +35,9 @@ const cartReducer = (state, action) => {
       const updatedItems = state.filter((item) => item.id !== action.item.id);
       return updatedItems;
     }
+  }
+  if (action.type === "RESET") {
+    return []
   }
   return [];
 };
@@ -57,10 +61,17 @@ const CartProvider = (props) => {
     });
   };
 
+  const handleResetCart = () => {
+    dispatchCartItems({
+      type: "RESET"
+    })
+  }
+
   const cartContext = {
     items: cartItems,
     addToCart: addToCartHandler,
     delFromCart: handleRemoveFromCart,
+    resetCart: handleResetCart
   };
 
   return (

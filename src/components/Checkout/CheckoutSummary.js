@@ -38,7 +38,7 @@ const CheckoutSummary = (props) => {
       {props.summary.couponStatus && (
         <div className={styles["coupon"]}>
           <div>Discount</div>
-          <div>-${props.summary.discount}</div>
+          <div>-${props.summary.discount.toFixed(2)}</div>
         </div>
       )}
       <div className={styles["total"]}>

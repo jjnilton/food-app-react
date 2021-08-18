@@ -37,8 +37,15 @@
   color: white;
 }
 
-.actions button[value="action"]:active {
+.actions button[value="action"]:not(:disabled):active {
   background-color: white;
   border: 1px solid brown;
   color: brown;
+}
+
+.actions button:disabled {
+  background-color: lightgray;
+  color: gray;
+  border: 1px solid gray;
+  cursor: default;
 }

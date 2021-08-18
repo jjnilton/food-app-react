@@ -137,7 +137,20 @@ const CheckoutForm = (props) => {
     addressValid &&
     creditCardInfoValid;
 
+  const handleFill = () => {
+    firstNameChange({ target: { value: "First"}})
+    lastNameChange({ target: { value: "Last"}})
+    documentChange({ target: { value: "1234567890"}})
+    addressChange({ target: { value: "Nowhere Street, 73, BA"}})
+    creditCardChange({ target: { value: "1234567890123456"}})
+    creditCardSecretChange({ target: { value: "123"}})
+    creditCardExpirationChange({ target: { value: "21/12"}})
+    creditCardOwnerChange({ target: { value: "First F. L. Last"}})
+  }
+
   return (
+    <>
+    <button onClick={handleFill} style={{position: "absolute", transform: "translate(0px, -20px)"}}>fill form</button>
     <form
       id="checkout-form"
       className={styles["checkout-form"]}
@@ -320,6 +333,7 @@ const CheckoutForm = (props) => {
         )}
       </fieldset>
     </form>
+    </>
   );
 };
 

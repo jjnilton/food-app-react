@@ -36,14 +36,14 @@ const Cart = (props) => {
             <button onClick={props.toggleCart} value="close">
               Close
             </button>
-            <button onClick={toggleCheckout} value="action">
+            <button onClick={toggleCheckout} value="action" disabled={total < 1}>
               Go To Checkout
             </button>
           </Actions>
         </>
       )}
       {showCheckout && (
-        <Checkout total={total} goBack={toggleCheckout}></Checkout>
+        <Checkout total={total} goBack={toggleCheckout} closeModal={props.toggleCart}></Checkout>
       )}
     </Modal>
   );
