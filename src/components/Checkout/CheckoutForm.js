@@ -152,7 +152,7 @@ const CheckoutForm = (props) => {
     <>
       <button
         onClick={handleFill}
-        style={{ position: "absolute", transform: "translate(0px, -20px)" }}
+        style={{ position: "absolute", transform: "translate(-5px, -20px) scale(0.75)",}}
       >
         fill form
       </button>
