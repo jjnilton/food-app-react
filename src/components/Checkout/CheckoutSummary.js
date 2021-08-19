@@ -7,8 +7,11 @@ const CheckoutSummary = (props) => {
 
   const cartItems = props.summary.items.map((item) => {
     return (
-      <li key={item.id}>
-        {item.name} (x{item.quantity})
+      <li className={styles.list} key={item.id}>
+        <div>{item.name}</div>
+        <div>${item.price.toFixed(2)}</div>
+        <div>x{item.quantity}</div>
+        <div>${(item.price * item.quantity).toFixed(2)}</div>
       </li>
     );
   });
@@ -25,8 +28,18 @@ const CheckoutSummary = (props) => {
 
   return (
     <div className={styles.summary}>
-      <div>Summary</div>
-      <ul>{cartItems}</ul>
+      <div>
+        <h2>Summary</h2>
+      </div>
+      <ul>
+        <div className={styles["list-header"]}>
+          <div>Item</div>
+          <div>Price</div>
+          <div>Qty</div>
+          <div>Subtotal</div>
+        </div>
+        {cartItems}
+      </ul>
       <div className={styles["subtotal"]}>
         <div>Products</div>
         <div>${props.summary.productsTotal.toFixed(2)}</div>
@@ -60,7 +73,11 @@ const CheckoutSummary = (props) => {
             onFocus={handleFocus}
           />
           <button disabled={props.summary.couponStatus}>Apply</button>
-          {!props.summary.couponStatus && userInteracted ? <div className={styles["invalid-message"]}>Invalid coupon.</div> : ""}
+          {!props.summary.couponStatus && userInteracted ? (
+            <div className={styles["invalid-message"]}>Invalid coupon.</div>
+          ) : (
+            ""
+          )}
         </div>
       </form>
     </div>

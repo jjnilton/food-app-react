@@ -15,18 +15,23 @@
   justify-content: flex-end;
 }
 
-.order-complete {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.order-complete > div {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* flex-direction: column; */
   margin: 20px;
 }
 
-.processing-order {
-  margin: 20px;
+.order-complete > div > p:first-child {
+  font-size: 1.4em;
+  text-align: center;
 }
 
-.order-complete button{
-  margin-top: 20px;
+.order-complete > div > p > span {
+  color: brown;
+}
+
+.processing-order > div {
+  margin: 20px;
 }

@@ -94,16 +94,15 @@ const Checkout = (props) => {
       if (hasFetchedOrders) {
         setIsLoading(true);
         try {
-          const postResponse = await fetch(
-            ORDERS_URL,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(orderSummary),
-            }
-          );
+          const postResponse = await fetch(ORDERS_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(orderSummary),
+          });
           if (!postResponse.ok) {
-            throw new Error(`${postResponse.status} ${postResponse.statusText}`);
+            throw new Error(
+              `${postResponse.status} ${postResponse.statusText}`
+            );
           } else {
             setHasPosted(true);
             setHasLoaded(true);
@@ -178,22 +177,37 @@ const Checkout = (props) => {
     setHasError(false);
   };
 
-  console.log("re-render")
+  console.log("re-render");
 
   return (
     <>
-      {isLoading && !hasLoaded || !isLoading && hasLoaded && !hasPosted ? (
+      {(isLoading && !hasLoaded) || (!isLoading && hasLoaded && !hasPosted) ? (
         <div className={styles["processing-order"]}>
-          <div>{statusMessage}</div>
-          {hasError && <button onClick={showCheckoutAgain}>Go back</button>}
+          <div>
+            <div>{statusMessage}</div>
+          </div>
+          {hasError && (
+            <Actions>
+              <button onClick={showCheckoutAgain} value="back">
+                Go back
+              </button>
+            </Actions>
+          )}
         </div>
       ) : (
         ""
       )}
       {hasPosted && hasLoaded && !isLoading ? (
         <div className={styles["order-complete"]}>
-          <div>Order complete #{orderId}</div>
-          <button onClick={props.closeModal}>Close</button>
+          <div>
+            <p>Order <span>#{orderId}</span> Confirmed</p>
+            <p>Thank you for your order!</p>
+          </div>
+          <Actions>
+            <button onClick={props.closeModal} value="close">
+              Close
+            </button>
+          </Actions>
         </div>
       ) : (
         ""

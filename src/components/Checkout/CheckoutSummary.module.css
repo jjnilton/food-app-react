@@ -3,6 +3,12 @@
   flex-direction: column;
 }
 
+.summary h2{
+  font-size: 1em;
+  margin: 0;
+  color: brown;
+}
+
 .summary ul {
   flex-grow: 1;
 }
@@ -72,4 +78,30 @@
 .summary .coupon-form .invalid-message {
   color: red;
   font-size: 12px;
+}
+
+.summary .list-header {
+  font-size: 0.8em;
+  color: gray;
+}
+
+.summary .list, .summary .list-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary .list > div {
+  border-bottom: 1px solid lightgray;
+}
+
+.summary .list > div:not(:nth-child(3)), .summary .list-header div:not(:nth-child(3)) {
+ flex: 1 1 20%;
+}
+
+.summary .list > div:nth-child(3), .summary .list-header > div:nth-child(3) {
+  flex: 1 1 5%;
+}
+
+.summary .list > div:not(:nth-child(1)), .summary .list-header > div:not(:nth-child(1)) {
+  text-align: right;
 }
