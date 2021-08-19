@@ -1,5 +1,12 @@
 .checkout-form fieldset {
   border-radius: 5px;
+  border-color: lightgray;
+  color: brown;
+  border-width: 0.1em;
+}
+
+.checkout-form label {
+  color: #222;
 }
 
 .checkout-form input.invalid {
@@ -39,6 +46,17 @@
 
 .checkout-form .payment-options {
   white-space: nowrap;
+}
+
+.checkout-form input:checked  {
+  filter: sepia(100%) contrast(200%) hue-rotate(310deg) brightness(1.1) drop-shadow(0px 0px 1px);
+}
+
+.checkout-form input:focus {
+  border: 2px solid rgb(141, 70, 70);
+  outline: 2px solid rgb(223, 209, 209);
+  outline-offset: 1px;
+  border-radius: 2px;
 }
 
 .checkout-form input[name="credit-card-number"], input[name="card-owner"] {

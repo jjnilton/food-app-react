@@ -27,6 +27,14 @@
 .summary .shipping, .summary .subtotal, .summary .total, .summary .coupon {
   display: flex;
   justify-content: space-between;
+  font-size: 0.9em;
+  color: #222;
+}
+
+.summary .total {
+  color: brown;
+  font-weight: bold;
+  font-size: 1em;
 }
 
 .summary .coupon {
@@ -34,7 +42,7 @@
 }
 
 .summary .subtotal {
-  border-top: 1px solid black;
+  border-top: 2px solid brown;
 }
 
 .summary form .invalid {
@@ -54,6 +62,7 @@
 
 .summary .coupon-form label {
   font-size: 12px;
+  color: #222;
 }
 
 .summary .coupon-form button {
@@ -92,6 +101,7 @@
 
 .summary .list > div {
   border-bottom: 1px solid lightgray;
+  color: #222;
 }
 
 .summary .list > div:not(:nth-child(3)), .summary .list-header div:not(:nth-child(3)) {
